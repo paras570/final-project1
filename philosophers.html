@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Philosophers - Stoic Tracker</title>
+  <link rel="stylesheet" href="philosophers.css" />
+</head>
+<body>
+  <aside class="sidebar dark">
+    <h2>🧘 Stoic Tracker</h2>
+    <nav>
+      <a href="index.html">🏠 Home</a>
+      <a href="tracker.html">✅ Habit Tracker</a>
+      <a href="calendar.html">📅 Calendar</a>
+      <a href="reflection.html">📓 Reflection</a>
+      <a href="contact.html">📨 Contact</a>
+      <a href="philosophers.html" class="active">📚 Philosophers</a>
+      <button id="themeToggle" aria-label="Toggle Theme">
+  🌞
+</button>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <section class="deck-title">
+      <h2>🎴 Unlock Stoic Wisdom</h2>
+      <p>Click a card to reveal their timeless teachings</p>
+    </section>
+
+    <section class="card-deck">
+      <!-- Marcus -->
+      <div class="card" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="marcus-ai.png" alt="Marcus Aurelius">
+            <h3>Marcus Aurelius</h3>
+          </div>
+          <div class="card-back">
+            <h4>Marcus Aurelius</h4>
+            <p>“The happiness of your life depends upon the quality of your thoughts.”</p>
+            <span>🧠 Wisdom Level: 98</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Seneca -->
+      <div class="card" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="ChatGPT Image Jun 14, 2025, 10_49_30 PM.png" alt="Seneca">
+            <h3>Seneca</h3>
+          </div>
+          <div class="card-back">
+            <h4>Seneca</h4>
+            <p>“We suffer more often in imagination than in reality.”</p>
+            <span>🧠 Wisdom Level: 95</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Epictetus -->
+      <div class="card" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="ChatGPT Image Jun 14, 2025, 10_51_55 PM.png" alt="Epictetus">
+            <h3>Epictetus</h3>
+          </div>
+          <div class="card-back">
+            <h4>Epictetus</h4>
+            <p>“It's not what happens to you, but how you react to it that matters.”</p>
+            <span>🧠 Wisdom Level: 97</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+  </main>
+  <script>
+  const toggleBtn = document.getElementById('themeToggle');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const currentTheme = localStorage.getItem('theme') || (prefersDark ? 'dark' : 'light');
+
+  if (currentTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+    toggleBtn.textContent = '🌙';
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    const isDark = document.body.classList.contains('dark-mode');
+    toggleBtn.textContent = isDark ? '🌙' : '🌞';
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  });
+</script>
+
+</body>
+</html>

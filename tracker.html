@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Habit Tracker</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <aside class="sidebar dark">
+    <h2>🧘 Stoic Tracker</h2>
+   <nav>
+  <a href="index.html">🏠 Home</a>
+  <a href="tracker.html">✅ Habit Tracker</a>
+  <a href="calendar.html">📅 Calendar</a>
+  <a href="reflection.html">📓 Reflection</a>
+  <a href="contact.html">📨 Contact</a>
+  <a href="philosophers.html">📚 Philosophers</a> <!-- Add this -->
+  <button id="themeToggle" aria-label="Toggle Theme">
+  🌞
+</button>
+</nav>
+
+  </aside>
+
+  <main class="main-content">
+    <header>
+      <h1>✅ Weekly Habit Game</h1>
+    </header>
+
+    <section class="box">
+      <div class="day">
+        <h3>Monday</h3>
+        <label><input type="checkbox" onchange="updateXP()"> Wake up before 7AM</label>
+        <label><input type="checkbox" onchange="updateXP()"> Meditate 10 minutes</label>
+        <label><input type="checkbox" onchange="updateXP()"> No Complaints</label>
+      </div>
+
+      <div class="day">
+        <h3>Tuesday</h3>
+        <label><input type="checkbox" onchange="updateXP()"> Read Stoic passage</label>
+        <label><input type="checkbox" onchange="updateXP()"> Walk 15 minutes</label>
+        <label><input type="checkbox" onchange="updateXP()"> Practice patience</label>
+      </div>
+
+      <div class="day">
+        <h3>Wednesday</h3>
+        <label><input type="checkbox" onchange="updateXP()"> Wake up early</label>
+        <label><input type="checkbox" onchange="updateXP()"> Journal 3 things</label>
+        <label><input type="checkbox" onchange="updateXP()"> Avoid gossip</label>
+      </div>
+
+      <div class="xp-display">
+        <progress id="xp-bar" value="0" max="100"></progress>
+        <p id="xp-label">XP: 0%</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function updateXP() {
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      const checked = Array.from(checkboxes).filter(cb => cb.checked).length;
+      const total = checkboxes.length;
+      const xp = (checked / total) * 100;
+
+      document.getElementById("xp-bar").value = xp;
+      document.getElementById("xp-label").textContent = `XP: ${xp.toFixed(0)}%`;
+      localStorage.setItem("weekly-xp", xp);
+    }
+
+    window.onload = () => {
+      const xp = localStorage.getItem("weekly-xp");
+      if (xp) {
+        document.getElementById("xp-bar").value = xp;
+        document.getElementById("xp-label").textContent = `XP: ${parseFloat(xp).toFixed(0)}%`;
+      }
+    };
+  const toggleBtn = document.getElementById('themeToggle');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const currentTheme = localStorage.getItem('theme') || (prefersDark ? 'dark' : 'light');
+
+  if (currentTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+    toggleBtn.textContent = '🌙';
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    const isDark = document.body.classList.contains('dark-mode');
+    toggleBtn.textContent = isDark ? '🌙' : '🌞';
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  });
+
+  </script>
+</body>
+</html>

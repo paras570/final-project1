@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Progress Calendar</title>
+  <link rel="stylesheet" href="cal-styles.css" />
+</head>
+<body>
+  <aside class="sidebar dark">
+    <h2>🧘 Stoic Tracker</h2>
+    <nav>
+      <a href="index.html">🏠 Home</a>
+      <a href="tracker.html">✅ Habit Tracker</a>
+      <a href="calendar.html" class="active">📅 Calendar</a>
+      <a href="reflection.html">📓 Reflection</a>
+      <a href="contact.html">📨 Contact</a>
+    </nav>
+    <button id="themeToggle" aria-label="Toggle Theme">
+  🌞
+</button>
+  </aside>
+
+  <main class="main-content">
+    <header>
+      <h1>📅 Monthly Progress Overview</h1>
+    </header>
+
+    <section class="calendar-box">
+      <p>This month you've completed <strong id="days-completed">0</strong> out of <strong>30</strong> days.</p>
+      <progress id="month-progress" value="0" max="30"></progress>
+      <p id="month-label">Progress: 0%</p>
+    </section>
+  </main>
+
+  <script>
+    // Simulate getting completed days from localStorage
+    const completedDays = parseInt(localStorage.getItem("month-completed") || "0");
+
+    document.getElementById("days-completed").textContent = completedDays;
+    document.getElementById("month-progress").value = completedDays;
+    document.getElementById("month-label").textContent = `Progress: ${(completedDays / 30 * 100).toFixed(0)}%`;
+
+    // Example: simulate update
+    // localStorage.setItem("month-completed", 12); // <- for dev/testing
+  const toggleBtn = document.getElementById('themeToggle');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const currentTheme = localStorage.getItem('theme') || (prefersDark ? 'dark' : 'light');
+
+  if (currentTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+    toggleBtn.textContent = '🌙';
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    const isDark = document.body.classList.contains('dark-mode');
+    toggleBtn.textContent = isDark ? '🌙' : '🌞';
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  });
+
+  </script>
+</body>
+</html>

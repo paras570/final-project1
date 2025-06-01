@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reflection Journal</title>
+  <link rel="stylesheet" href="reflection-style.css" />
+</head>
+<body>
+  <aside class="sidebar dark">
+    <h2>🧘 Stoic Tracker</h2>
+    <nav>
+  <a href="index.html">🏠 Home</a>
+  <a href="tracker.html">✅ Habit Tracker</a>
+  <a href="calendar.html">📅 Calendar</a>
+  <a href="reflection.html">📓 Reflection</a>
+  <a href="contact.html">📨 Contact</a>
+  <a href="philosophers.html">📚 Philosophers</a> <!-- Add this -->
+  <button id="themeToggle" aria-label="Toggle Theme">
+  🌞
+</button>
+</nav>
+
+  </aside>
+
+  <main class="main-content">
+    <header>
+      <h1>📓 Daily Reflection</h1>
+    </header>
+
+    <section class="reflection-box">
+      <label for="reflect-date">Pick a Date</label>
+      <input type="date" id="reflect-date" />
+
+      <label for="reflect-text">What did you learn or experience today?</label>
+      <textarea id="reflect-text" placeholder="Write your reflection here..."></textarea>
+
+      <button onclick="saveReflection()">Save Reflection</button>
+
+      <div id="saved-entry" class="entry" style="display:none;"></div>
+    </section>
+  </main>
+  <script>
+  const toggleBtn = document.getElementById('themeToggle');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const currentTheme = localStorage.getItem('theme') || (prefersDark ? 'dark' : 'light');
+
+  if (currentTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+    toggleBtn.textContent = '🌙';
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    const isDark = document.body.classList.contains('dark-mode');
+    toggleBtn.textContent = isDark ? '🌙' : '🌞';
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  });
+</script>
+
+
+  <script src="reflection.js"></script>
+
+</body>
+</html>

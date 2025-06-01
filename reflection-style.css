@@ -1,0 +1,123 @@
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  background-color: #f8fafc;
+  color: #1e293b;
+}
+
+.sidebar {
+  width: 220px;
+  min-height: 100vh;
+  background: #0f172a;
+  color: white;
+  padding: 1.5rem 1rem;
+}
+
+.sidebar h2 {
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.sidebar nav a {
+  display: block;
+  margin: 0.8rem 0;
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+  background-color: #334155;
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem;
+}
+
+header h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.reflection-box {
+  background-color: #fef9c3;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  max-width: 700px;
+  margin: auto;
+}
+
+.reflection-box label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.reflection-box textarea {
+  width: 100%;
+  height: 150px;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  margin-bottom: 1rem;
+  resize: vertical;
+}
+
+.reflection-box input[type="date"] {
+  padding: 0.6rem;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.reflection-box button {
+  background-color: #2563eb;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.reflection-box .entry {
+  background: #fff;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+}
+/* Default light theme */
+body {
+  background-color: #ffffff;
+  color: #000000;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+  background-color: #111111;
+  color: #ffffff;
+}
+
+/* Toggle Button */
+#themeToggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  z-index: 999;
+  color: inherit;
+}
